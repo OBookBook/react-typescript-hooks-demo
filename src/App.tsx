@@ -6,7 +6,14 @@ function App() {
   return (
     <div id="root">
       <h1>useState</h1>
-      <small>setCountが呼ばれるたびに再レンダリングが発生します</small>
+      <small>
+        <ul>
+          <li>setCountが呼ばれるたびに再レンダリングが発生します</li>
+          <li>
+            親コンポーネントが再レンダリングすると、子コンポーネントも再レンダリングされます。
+          </li>
+        </ul>
+      </small>
       <p>{count}</p>
       <button onClick={() => setCount(count + 1)}>+</button>
       <button onClick={() => setCount(count - 1)}>-</button>
