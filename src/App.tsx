@@ -1,6 +1,6 @@
 import "./App.css";
 import { NaobeContext } from "./main";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useReducer, useRef, useState } from "react";
 
 function App() {
   const [count, setCount] = useState<number>(0);
@@ -16,6 +16,18 @@ function App() {
 
   const ref = useRef<HTMLInputElement>(null);
   const handleRef = () => console.log(ref.current?.value);
+
+  const reducer = (state: number, action: string) => {
+    switch (action) {
+      case "increment":
+        return state + 1;
+      case "decrement":
+        return state - 1;
+      default:
+        return state;
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, 0);
 
   return (
     <div id="root">
@@ -69,6 +81,22 @@ function App() {
         </small>
         <input type="text" ref={ref} />
         <button onClick={handleRef}>追加</button>
+      </div>
+
+      <hr />
+      <div className="mt-50">
+        <h1>useReducer</h1>
+        <small>
+          <ul>
+            <li>useState の代わりに、より複雑な状態管理を行うためのフック</li>
+            <li>
+              状態遷移を管理するための関数（reducer）を渡すことで、状態を管理
+            </li>
+          </ul>
+        </small>
+        <p>{state}</p>
+        <button onClick={() => dispatch("increment")}>+</button>
+        <button onClick={() => dispatch("decrement")}>-</button>
       </div>
     </div>
   );
