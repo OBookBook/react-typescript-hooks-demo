@@ -1,8 +1,8 @@
 import "./App.css";
 import SomeChild from "./components/SomeChild";
+import UseContext from "./components/UseContext";
 import UseEffect from "./components/UseEffect";
 import UseState from "./components/useState";
-import { NaobeContext } from "./main";
 import {
   useContext,
   useReducer,
@@ -13,8 +13,6 @@ import {
 } from "react";
 
 function App() {
-  const naobeInfo = useContext(NaobeContext);
-
   const ref = useRef<HTMLInputElement>(null);
   const handleRef = () => console.log(ref.current?.value);
 
@@ -56,21 +54,8 @@ function App() {
     <div id="root">
       <UseState />
       <UseEffect />
+      <UseContext />
 
-      <div className="mt-50">
-        <h1>useContext</h1>
-        <small>
-          <ul>
-            <li>{naobeInfo.name}</li>
-            <li>プロパティのバケツリレーを回避</li>
-            <li>コンポーネントツリー全体にデータを渡すための仕組み</li>
-            <li>
-              アプリケーション全体で共有するデータ（ユーザー情報、テーマ設定など）を管理
-            </li>
-          </ul>
-        </small>
-      </div>
-      <hr />
       <div className="mt-50">
         <h1>useRef</h1>
         <small>

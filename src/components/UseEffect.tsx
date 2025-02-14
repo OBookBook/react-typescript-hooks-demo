@@ -17,6 +17,7 @@ const UseEffect = () => {
           </li>
         </ul>
       </small>
+      <hr />
     </div>
   );
 };
