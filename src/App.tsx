@@ -4,21 +4,10 @@ import UseContext from "./components/UseContext";
 import UseEffect from "./components/UseEffect";
 import UseRef from "./components/UseRef";
 import UseState from "./components/useState";
-import { useReducer, useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
+import UseReducer from "./components/useReducer";
 
 function App() {
-  const reducer = (state: number, action: string) => {
-    switch (action) {
-      case "increment":
-        return state + 1;
-      case "decrement":
-        return state - 1;
-      default:
-        return state;
-    }
-  };
-  const [state, dispatch] = useReducer(reducer, 0);
-
   const [count01, setCount01] = useState<number>(0);
   const [count02, setCount02] = useState<number>(0);
   // 重い計算
@@ -47,23 +36,7 @@ function App() {
       <UseEffect />
       <UseContext />
       <UseRef />
-
-      <div className="mt-50">
-        <h1>useReducer</h1>
-        <small>
-          <ul>
-            <li>useState の代わりに、より複雑な状態管理を行うためのフック</li>
-            <li>
-              状態遷移を管理するための関数（reducer）を渡すことで、状態を管理
-            </li>
-          </ul>
-        </small>
-        <p>{state}</p>
-        <button onClick={() => dispatch("increment")}>+</button>
-        <button onClick={() => dispatch("decrement")}>-</button>
-      </div>
-
-      <hr />
+      <UseReducer />
       <div className="mt-50">
         <h1>useMemo</h1>
         <small>
