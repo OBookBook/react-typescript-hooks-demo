@@ -1,5 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { NaobeContext } from "./main";
+import { useContext, useEffect, useState } from "react";
 
 function App() {
   const [count, setCount] = useState<number>(0);
@@ -10,6 +11,8 @@ function App() {
       console.log("ページがアンマウントされました");
     };
   }, [count]);
+
+  const naobeInfo = useContext(NaobeContext);
 
   return (
     <div id="root">
@@ -36,12 +39,16 @@ function App() {
           </ul>
         </small>
       </div>
+
       <div className="mt-50">
-        <h1>useEffect</h1>
+        <h1>useContext</h1>
         <small>
           <ul>
+            <li>{naobeInfo.name}</li>
+            <li>プロパティのバケツリレーを回避</li>
+            <li>コンポーネントツリー全体にデータを渡すための仕組み</li>
             <li>
-              発火のタイミング(依存配列が更新された、ページがマウント、ページがアンマウント)
+              アプリケーション全体で共有するデータ（ユーザー情報、テーマ設定など）を管理
             </li>
           </ul>
         </small>
