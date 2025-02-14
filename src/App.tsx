@@ -2,20 +2,11 @@ import "./App.css";
 import SomeChild from "./components/SomeChild";
 import UseContext from "./components/UseContext";
 import UseEffect from "./components/UseEffect";
+import UseRef from "./components/UseRef";
 import UseState from "./components/useState";
-import {
-  useContext,
-  useReducer,
-  useRef,
-  useState,
-  useMemo,
-  useCallback,
-} from "react";
+import { useReducer, useState, useMemo, useCallback } from "react";
 
 function App() {
-  const ref = useRef<HTMLInputElement>(null);
-  const handleRef = () => console.log(ref.current?.value);
-
   const reducer = (state: number, action: string) => {
     switch (action) {
       case "increment":
@@ -55,20 +46,8 @@ function App() {
       <UseState />
       <UseEffect />
       <UseContext />
+      <UseRef />
 
-      <div className="mt-50">
-        <h1>useRef</h1>
-        <small>
-          <ul>
-            <li>DOM 要素に直接アクセスし要素や属性を参照する</li>
-            <li>useRef で保持した値は、再レンダリングされても変わらない</li>
-          </ul>
-        </small>
-        <input type="text" ref={ref} />
-        <button onClick={handleRef}>追加</button>
-      </div>
-
-      <hr />
       <div className="mt-50">
         <h1>useReducer</h1>
         <small>
