@@ -1,10 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import "./index.css";
+import App from "./App.tsx";
+import { createRoot } from "react-dom/client";
+import { createContext, StrictMode } from "react";
 
-createRoot(document.getElementById('root')!).render(
+const naobeInfo = {
+  name: "Next.js",
+};
+
+const NaobeContext = createContext(naobeInfo);
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <NaobeContext.Provider value={naobeInfo}>
+      <App />
+    </NaobeContext.Provider>
+  </StrictMode>
+);
+
+export { NaobeContext };
