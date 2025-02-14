@@ -1,10 +1,10 @@
 import "./App.css";
 import SomeChild from "./components/SomeChild";
+import UseEffect from "./components/UseEffect";
 import UseState from "./components/useState";
 import { NaobeContext } from "./main";
 import {
   useContext,
-  useEffect,
   useReducer,
   useRef,
   useState,
@@ -13,13 +13,6 @@ import {
 } from "react";
 
 function App() {
-  useEffect(() => {
-    console.log("ページがマウントされました");
-    return () => {
-      console.log("ページがアンマウントされました");
-    };
-  }, []);
-
   const naobeInfo = useContext(NaobeContext);
 
   const ref = useRef<HTMLInputElement>(null);
@@ -62,17 +55,7 @@ function App() {
   return (
     <div id="root">
       <UseState />
-      <div className="mt-50">
-        <h1>useEffect</h1>
-        <small>
-          <ul>
-            <li>
-              発火のタイミング(依存配列が更新された、ページがマウント、ページがアンマウント)
-            </li>
-          </ul>
-        </small>
-      </div>
-      <hr />
+      <UseEffect />
 
       <div className="mt-50">
         <h1>useContext</h1>
