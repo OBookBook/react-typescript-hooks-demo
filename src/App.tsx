@@ -1,6 +1,6 @@
 import "./App.css";
 import { NaobeContext } from "./main";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 function App() {
   const [count, setCount] = useState<number>(0);
@@ -13,6 +13,9 @@ function App() {
   }, [count]);
 
   const naobeInfo = useContext(NaobeContext);
+
+  const ref = useRef<HTMLInputElement>(null);
+  const handleRef = () => console.log(ref.current?.value);
 
   return (
     <div id="root">
@@ -54,6 +57,18 @@ function App() {
             </li>
           </ul>
         </small>
+      </div>
+      <hr />
+      <div className="mt-50">
+        <h1>useRef</h1>
+        <small>
+          <ul>
+            <li>DOM 要素に直接アクセスし要素や属性を参照する</li>
+            <li>useRef で保持した値は、再レンダリングされても変わらない</li>
+          </ul>
+        </small>
+        <input type="text" ref={ref} />
+        <button onClick={handleRef}>追加</button>
       </div>
     </div>
   );
