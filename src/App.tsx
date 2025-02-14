@@ -6,6 +6,7 @@ import UseState from "./components/useState";
 import UseReducer from "./components/useReducer";
 import UseMemo from "./components/UseMemo";
 import UseCallback from "./components/UseCallback";
+import CustomHook from "./components/CustomHook";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <UseReducer />
       <UseMemo />
       <UseCallback />
+      <CustomHook />
     </div>
   );
 }
