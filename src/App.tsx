@@ -28,6 +28,7 @@ function App() {
       <p>{count}</p>
       <button onClick={() => setCount(count + 1)}>+</button>
       <button onClick={() => setCount(count - 1)}>-</button>
+      <hr />
 
       <div className="mt-50">
         <h1>useEffect</h1>
@@ -39,6 +40,7 @@ function App() {
           </ul>
         </small>
       </div>
+      <hr />
 
       <div className="mt-50">
         <h1>useContext</h1>
