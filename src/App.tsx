@@ -1,8 +1,16 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [count, setCount] = useState<number>(0);
+
+  useEffect(() => {
+    console.log("ページがマウントされました");
+    return () => {
+      console.log("ページがアンマウントされました");
+    };
+  }, [count]);
+
   return (
     <div id="root">
       <h1>useState</h1>
@@ -17,6 +25,27 @@ function App() {
       <p>{count}</p>
       <button onClick={() => setCount(count + 1)}>+</button>
       <button onClick={() => setCount(count - 1)}>-</button>
+
+      <div className="mt-50">
+        <h1>useEffect</h1>
+        <small>
+          <ul>
+            <li>
+              発火のタイミング(依存配列が更新された、ページがマウント、ページがアンマウント)
+            </li>
+          </ul>
+        </small>
+      </div>
+      <div className="mt-50">
+        <h1>useEffect</h1>
+        <small>
+          <ul>
+            <li>
+              発火のタイミング(依存配列が更新された、ページがマウント、ページがアンマウント)
+            </li>
+          </ul>
+        </small>
+      </div>
     </div>
   );
 }
