@@ -1,5 +1,6 @@
 import "./App.css";
 import SomeChild from "./components/SomeChild";
+import UseState from "./components/useState";
 import { NaobeContext } from "./main";
 import {
   useContext,
@@ -12,14 +13,12 @@ import {
 } from "react";
 
 function App() {
-  const [count, setCount] = useState<number>(0);
-
   useEffect(() => {
     console.log("ページがマウントされました");
     return () => {
       console.log("ページがアンマウントされました");
     };
-  }, [count]);
+  }, []);
 
   const naobeInfo = useContext(NaobeContext);
 
@@ -62,20 +61,7 @@ function App() {
 
   return (
     <div id="root">
-      <h1>useState</h1>
-      <small>
-        <ul>
-          <li>setCountが呼ばれるたびに再レンダリングが発生します</li>
-          <li>
-            親コンポーネントが再レンダリングすると、子コンポーネントも再レンダリングされます。
-          </li>
-        </ul>
-      </small>
-      <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
-      <hr />
-
+      <UseState />
       <div className="mt-50">
         <h1>useEffect</h1>
         <small>
