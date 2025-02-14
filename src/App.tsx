@@ -1,4 +1,5 @@
 import "./App.css";
+import SomeChild from "./components/SomeChild";
 import { NaobeContext } from "./main";
 import {
   useContext,
@@ -7,6 +8,7 @@ import {
   useRef,
   useState,
   useMemo,
+  useCallback,
 } from "react";
 
 function App() {
@@ -50,6 +52,13 @@ function App() {
     while (i < 1000000000) i++;
     return count02 * count02;
   }, [count02]);
+
+  const [counter, setCounter] = useState<number>(0);
+  const showCount = useCallback(() => {
+    let i = 0;
+    while (i < 1000000) i++;
+    alert("重い処理です。");
+  }, [counter]);
 
   return (
     <div id="root">
@@ -138,6 +147,18 @@ function App() {
         <p>カウント結果 値をメモ化: {square}</p>
         <button onClick={() => setCount01(count01 + 1)}>+</button>
         <button onClick={() => setCount02(count02 + 1)}>+</button>
+      </div>
+
+      <hr />
+      <div className="mt-50">
+        <h1>useCallback</h1>
+        <small>
+          <ul>
+            <li>メモ化(関数をブラウザのキャッシュに保存)</li>
+            <li>関数をメモ化することで、関数の再生成を避けることができる</li>
+          </ul>
+        </small>
+        <SomeChild showCount={showCount} />
       </div>
     </div>
   );
